@@ -18,7 +18,20 @@ public class Aquarium{
      * @return a suitable tank for fishy or null if no such tank exists
      */
     private Tank findTank(Fish fishy){
-        /* to be implemented in part (a) */
+        boolean compatible = true;
+        for (Tank tank : tanks){
+            if (tank.temp() >= fishy.minTemp() && tank.temp() <= fishy.maxTemp()){
+                for (Fish fish : tank.getFish()){
+                    if (fishy.isCompatible(fish) == false){
+                        compatible = false;
+                    }
+                }
+                if (compatible){
+                    return tank;
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -28,7 +41,16 @@ public class Aquarium{
      * @return a list of the fish in fishes that could not be added
      */
     public ArrayList<Fish> addFish(ArrayList<Fish> fishes){
-        /* to be implemented in part (b) */
+        ArrayList<Fish> noHome = new ArrayList<Fish>();
+        for (Fish fish : fishes){
+            if (findTank(fish) != null){
+                Tank tank = findTank(fish);
+                tank.addFish(fish);
+            }else{
+                noHome.add(fish);
+            }
+        }
+        return noHome;
     }
 
     /**
