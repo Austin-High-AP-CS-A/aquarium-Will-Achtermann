@@ -17,14 +17,7 @@ public class Fish{
      * Postcondition: minTemp() <= maxTemp()
      */
     public int minTemp(){
-        if (minTemp <= maxTemp){
-            return minTemp;
-        }else{
-            int temp = minTemp;
-            minTemp = maxTemp;
-            maxTemp = temp;
-            return minTemp;
-        }
+        return Math.min(maxTemp, minTemp);
     }
 
     /**
@@ -32,14 +25,7 @@ public class Fish{
      * Postcondition: maxTemp() >= minTemp()
      */
     public int maxTemp(){
-        if (minTemp <= maxTemp){
-            return maxTemp;
-        }else{
-            int temp = minTemp;
-            minTemp = maxTemp;
-            maxTemp = temp;
-            return maxTemp;
-        }
+        return Math.max(maxTemp, minTemp);
     }
 
     /**
@@ -55,6 +41,7 @@ public class Fish{
     public void addFriend(Fish buddy){
         if (Math.max(this.minTemp, buddy.minTemp) <= Math.min(this.maxTemp, buddy.maxTemp)){
             this.friends.add(buddy);
+            buddy.friends.add(this);
         }else{
             System.out.println("Error, fishies are not compatible with each other.");
         }

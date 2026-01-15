@@ -3,6 +3,8 @@ import java.util.Arrays;
 
 public class Main{
     public static void main(String[] args){
+        Aquarium aquarium = new Aquarium();
+
         //Fish
         Fish catfish1 = new Fish("Catfish1",75,85); //0
         Fish catfish2 = new Fish("Catfish2",75,85); //1
@@ -22,48 +24,44 @@ public class Main{
         catfish1.addFriend(perch1);
         catfish1.addFriend(perch2);
 
-        catfish2.addFriend(catfish1);
         catfish2.addFriend(perch1);
         catfish2.addFriend(perch2);
 
         //Perch are compatible with catfish, perch and trout
-        perch1.addFriend(catfish1);
-        perch1.addFriend(catfish2);
         perch1.addFriend(perch2);
         perch1.addFriend(trout1);
         perch1.addFriend(trout2);
 
-        perch2.addFriend(catfish1);
-        perch2.addFriend(catfish2);
-        perch2.addFriend(perch1);
         perch2.addFriend(trout1);
         perch2.addFriend(trout2);
 
         //Trout are compatible with trout and perch
         trout1.addFriend(trout2);
-        trout1.addFriend(perch1);
-        trout1.addFriend(perch2);
-
-        trout2.addFriend(trout1);
-        trout2.addFriend(perch1);
-        trout2.addFriend(perch2);
 
         //Minnows are compatible with minnows and shad
         minnow1.addFriend(minnow2);
         minnow1.addFriend(shad1);
         minnow1.addFriend(shad2);
 
-        minnow2.addFriend(minnow1);
         minnow2.addFriend(shad1);
         minnow2.addFriend(shad2);
 
         //Shad are compatible with shad and minnows
         shad1.addFriend(shad2);
-        shad1.addFriend(minnow1);
-        shad1.addFriend(minnow2);
 
-        shad2.addFriend(shad1);
-        shad2.addFriend(minnow1);
-        shad2.addFriend(minnow2);
+        //TANKS
+        Tank tank1 = new Tank(63);
+        Tank tank2 = new Tank(67);
+        aquarium.addTank(tank1);
+        aquarium.addTank(tank2);
+
+
+        //addig fish
+        ArrayList<Fish> fishh = new ArrayList<Fish>();
+        fishh.add(shad1);
+        fishh.add(minnow1);
+        aquarium.addFish(fishh);
+        System.out.println(tank1.getFish());
+        System.out.println(tank2.getFish());
     }
 }
