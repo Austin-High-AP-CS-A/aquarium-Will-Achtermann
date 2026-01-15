@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main{
     public static void main(String[] args){
@@ -52,15 +51,19 @@ public class Main{
         //TANKS
         Tank tank1 = new Tank(63);
         Tank tank2 = new Tank(67);
+        Tank tank3 = new Tank(90);
         aquarium.addTank(tank1);
         aquarium.addTank(tank2);
+        System.out.println(aquarium.addTank(tank3));
 
 
         //addig fish
         ArrayList<Fish> fishh = new ArrayList<Fish>();
         fishh.add(shad1);
         fishh.add(minnow1);
-        aquarium.addFish(fishh);
+        fishh.add(perch1);
+        fishh.add(anglerfish);
+        System.out.println(aquarium.addFish(fishh));
         System.out.println(tank1.getFish());
         System.out.println(tank2.getFish());
     }
